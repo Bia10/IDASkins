@@ -41,13 +41,18 @@ QListWidget, QTableWidget, QTextBrowser {
   background-color: #363636;
   color: #ddd;
 }
+QListWidget:hover {
+  border: 1px solid #0094FF;
+}
 QMainWindow::separator {
   background-color: #363636;
   border: 1px dashed #777777;
-  height: 3px;
+  height: 2px;
+  margin: 1px;
 }
 QMainWindow::separator:hover {
-  background-color: #000000;
+  background-color: #0D5484;
+  border: 1px dashed #fff; /* #3daee9 */
 }
 QSlider:focus {
   border: none;
@@ -92,7 +97,7 @@ QToolBar:active {
 QToolBar QWidget {
   background: transparent;
 }
-QToolBar:handle:top,
+/*QToolBar:handle:top,
 QToolBar:handle:bottom,
 QToolBar:handle:horizontal {
   width: 2px;
@@ -105,6 +110,22 @@ QToolBar:handle:vertical {
   height: 2px;
   margin: 4px 2px;
   background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0.5 #181818, stop:0.6 #777777);
+}*/
+QToolBar::separator:top,
+QToolBar::separator:bottom,
+QToolBar::separator:horizontal {
+    /*image: url(<SKINDIR>/icons/Hsepartoolbar.png);*/
+	width: 2px;
+	margin: 2px 4px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0.5 #777777, stop:0.6 #181818);
+}
+QToolBar::separator:left,
+QToolBar::separator:right,
+QToolBar::separator:vertical {
+    /* image: url(<SKINDIR>/icons/Vsepartoolbar.png); */
+	height: 2px;
+	margin: 4px 2px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0.5 #777777, stop:0.6 #181818);
 }
 
 QToolButton {
@@ -113,15 +134,15 @@ QToolButton {
   padding: 2px;
 }
 QToolButton[popupMode="1"] { /* only for MenuButtonPopup */
-  padding-right: 14px; /* make way for the popup button */
+  padding-right: 16px; /* make way for the popup button */
 }
 QToolButton[popupMode="2"] { /* only for InstantPopup */
-  padding-right: 14px; /* make way for the popup button */
+  padding-right: 16px; /* make way for the popup button */
 }
 QToolButton:menu-button {
   border: 1px solid transparent;
-  /* 12px width + 2px for border = 14px allocated above */
-  width: 12px;
+  /* 14px width + 2px for border = 16px allocated above */
+  width: 14px;
 }
 QToolButton:menu-indicator {
   image: url(<SKINDIR>/icons/down_arrow_white.png);
@@ -132,7 +153,7 @@ QToolButton:menu-indicator:open {
   top: -6px; left: -1px; /* shift it a bit */
 }
 QToolButton:menu-indicator:hover {
-  image: url(<SKINDIR>/icons/down_arrow_hover.png);
+  image: url(<SKINDIR>/icons/down_arrow_white.png);
   top: -6px; left: -1px; /* shift it a bit */
 }
 QToolButton:menu-indicator:disabled {
@@ -146,7 +167,7 @@ QToolButton:menu-arrow:open {
   image: url(<SKINDIR>/icons/down_arrow_white.png);
 }
 QToolButton:menu-arrow:hover {
-  image: url(<SKINDIR>/icons/down_arrow_hover.png);
+  image: url(<SKINDIR>/icons/down_arrow_white.png);
 }
 QToolButton:menu-arrow:disabled {
   image: url(<SKINDIR>/icons/down_arrow_disabled.png);
@@ -178,38 +199,15 @@ QToolButton:pressed {
   color: #ffffff;
 }
 
-IDAMainWindow > QStatusBar {
-  min-height: 0;
-  height: 22px;
-  background-color: #007acc;
-  padding-right: 0;
-  margin-right: 0;
-}
-IDAMainWindow > QStatusBar:item {
-  border: none;
-  border-right: 1px solid #363636;
-}
-IDAMainWindow > QStatusBar QWidget {
-  font-family: 'Consolas', 'Menlo';
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  /*text-transform: uppercase;*/
-}
-QStatusBar QLabel {
-  padding: 1px 10px 1px 10px;
-  min-width: 50px;
-}
-
 QPushButton {
   /* Buttons */
   font-family: 'Segoe UI', 'Helvetica Neue';
   text-align: center;
-  min-height: 14px;
-  min-width: 30px;
+  min-height: 20px;
+  min-width: 50px;
   border: 1px solid #0e639c;
   background-color: #0D5484;
-  padding: 2px 14px 3px 14px;
+  padding: 2px;
   outline: none;
 }
 QPushButton:default {
@@ -321,8 +319,10 @@ QTabBar {
   background-color: #363636;
 }
 QTabBar:tab {
-  border: 1px solid #484848;
-  border-left: 1px solid #000;
+  border: 1px solid #555555;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-top-right-radius: 1px;
   background-color: #282828;
   padding: 4px;
   font-size: 12px;
@@ -340,23 +340,24 @@ QTabBar:close-button:hover {
   background-color: #c00000;
 }
 QTabBar:tab:selected {
-  border: 1px solid #777777;
-  background-color: #111111;
+  border: 1px solid #555555;
+  background-color: #181818;
   font-size: 12px;
   font-weight: bold;
-  color: #FFE97F;
+  text-decoration: underline;
+  color: #ffffff;
 }
 QTabBar::tab:hover {
   background-color: #0D67A3;
   border: 1px solid #0094FF;
   color: #ffffff;
+  border-top-right-radius: 0px;
 }
-/*QTabBar::tab:pressed {
+QTabBar::tab:pressed {
   background-color: #084870;
-  border: 1px solid #555555;
+  border: 1px solid #0094FF;
   color: #ffffff;
-  padding: 4px 2px 2px 4px;
-}*/
+}
 QTabBar:close-button:pressed {
   icon-size: 24px;
   padding: 1px -1px -1px 1px;
@@ -413,7 +414,55 @@ QTableView:item:hover {
 QTableView:section:item {
   background-color: #1e1e1e;
 }
-QTableView QHeaderView:section {
+
+TChooser {
+  border: 1px solid #555555;
+  background-color: transparent;
+}
+TChooserView {
+  padding: 0;
+  margin: 0;
+  border: 0px solid transparent;
+  background-color: transparent;
+}
+TChooserView QWidget {
+  background-color: transparent;
+}
+
+QHeaderView {
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin: 0;
+  min-height: 20px;
+}
+QHeaderView:section {
+  background-color: #363636;
+  border: 1px solid #555555;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  border-top-right-radius: 1px;
+  border-bottom-left-radius: 1px;
+}
+QHeaderView:section:hover {
+  background-color: #205B86;
+}
+QHeaderView:section:pressed {
+  background-color: #094771;
+  border: 1px solid #000;
+  border-bottom: 1px solid #555555;
+  border-right: 1px solid #555555;
+  border-top-right-radius: 1px;
+  border-bottom-left-radius: 1px;
+}
+QHeaderView:section:horizontal {
+  padding: 1px 4px 1px 4px;
+}
+QHeaderView:section:vertical {
+  padding: 0;
+  background: transparent;
+}
+
+/*QTableView QHeaderView:section {
   background-color: #363636;
   border: 1px solid #000;
   margin-right: -1px;
@@ -424,7 +473,7 @@ QTableView QHeaderView:section:horizontal {
 QTableView QHeaderView:section:vertical {
   padding: 0;
   background: transparent;
-}
+}*/
 QTableView QTableCornerButton:section {
   background-color: #2D3234;
   border: 0px outset #000;
@@ -750,25 +799,15 @@ RegJumpButton {
   border: none;
   padding: 0;
 }
-TChooserView {
-  padding: 0;
-  margin: 0;
-  border: 0px solid transparent;
-  background-color: transparent;
-}
-TChooserView > QWidget {
-  background-color: #ff0000;
-}
+
 /* Dock widget which has tabs */
 DockWidgetTitle {
-  border: none;
+  border: 1px solid transparent;
   background-color: #363636;
   font-family: 'Segoe UI', 'Helvetica Neue';
   font-size: 13px;
   /*text-transform: uppercase;*/
   height: 22px;
-  margin: 0;
-  padding: 0;
 }
 DockWidgetTitle DockWidgetTitleButton {
   color: #fff;
@@ -803,7 +842,7 @@ DockWidgetTitle DockWidgetTitleButton[toolTip="Close"]:pressed {
 }
 
 EditContainer {
-  border: 1px solid #ff1F20;
+  border: 1px solid #555555;
   font-family: "<TEXT_INPUT_FONT_FAMILY>";
   font-size: <TEXT_INPUT_FONT_SIZE>;
   font-style: <TEXT_INPUT_FONT_STYLE>;
@@ -919,37 +958,7 @@ ChooserContainer {
 TextArrows {
   border-bottom: 1px solid #414141;
 }
-IDADockWidget[objectName="Output window"] {
-  /* Output window */
-  qproperty-windowIcon: url(<SKINDIR>/icons/blank.png);
-}
-IDADockWidget[objectName="Output window"] DockWidgetTitle {
-  background-color: #363636;
-  color: #e7e7e7;
-}
-IDADockWidget[objectName="Output window"] QTextEdit:focus {
-  border: 1px solid #215D9C;
-}
-IDADockWidget[objectName="Output window"] QLineEdit {
-  padding-bottom: 2px;
-}
-IDADockWidget[objectName="Output window"] QGroupBox {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-IDADockWidget[objectName="Output window"] QGroupBox QPushButton {
-  background-color: #0F6EAD;
-  border: 1px solid #0e639c;
-  /*text-transform: uppercase;*/
-  min-width: 70px;
-}
-IDADockWidget[objectName="Output window"] QGroupBox QPushButton:focus {
-  border: 1px solid #0094FF;
-}
-IDADockWidget[objectName="Output window"] QGroupBox QPushButton:hover {
-  border: 1px solid #0094FF;
-}
+
 QToolTip, QTipLabel {
   border: 1px solid #808000;
   border-radius: 4px;
@@ -963,34 +972,25 @@ QToolTip, QTipLabel {
 
 /* Splitter */
 
+QSplitter {
+  margin: 1px;
+}
 QSplitter::handle, QSplitterHandle {
   border: 1px dashed #777777;
 }
 QSplitter::handle:hover, QSplitterHandle:hover {
-  background-color: #181818;
-  border: 1px dashed #777777; /* #3daee9 */
+  background-color: #0D5484;
+  border: 1px dashed #fff; /* #3daee9 */
 }
 QSplitter::handle:horizontal, QSplitterHandle:horizontal {
-  width: 2px;
+  width: 0px;
 }
 QSplitter::handle:vertical, QSplitterHandle:vertical {
-  height: 2px;
+  height: 0px;
 }
 QSplitter::handle:pressed, QSplitterHandle:pressed {
-  background-color: #181818;
-  border: 1px solid #181818;
-}
-QSizeGrip {
-  image: url(<SKINDIR>/icons/sizegrip.png);
-  width: 16px;
-  height: 16px;
-  background-color: transparent;
-  margin: 0;
-  padding 0;
-}
-QTableView {
-  border: 0px solid #000;
-  background-color: #2d2d2d;
+  background-color: #094771;
+  border: 1px solid #777777;
 }
 
 TNavBand > QPushButton,
@@ -1025,5 +1025,122 @@ TNavBand > QPushButton:disabled,
 navigator_t > QPushButton:disabled {
   border: 1px solid transparent;
   background-color: transparent;
+}
+
+QStatusBar {
+  background-color: #363636;
+  border: 1px solid #555555;
+  margin: 1px 0px 0px 0px;
+}
+QStatusBar:item {
+  border: none;
+  border-right: 2px solid qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0.5 #555555, stop:0.6 #181818);
+}
+QStatusBar QWidget {
+  font-family: 'Consolas', 'Menlo';
+  color: #fff;
+  text-align: center;
+  /*font-weight: bold;
+  text-transform: uppercase;*/
+}
+QStatusBar QLabel {
+  padding: 1px 10px 1px 10px;
+  min-width: 50px;
+}
+
+IDAView > QStatusBar {
+  background-color: #363636;
+  border: 1px solid #555555;
+  font-weight: bold;
+  margin: 1px 0px 0px 0px;
+}
+IDAView > QStatusBar:item {
+  border: none;
+  border-right: 2px solid qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0.5 #555555, stop:0.6 #181818);
+}
+IDAView > QStatusBar QWidget {
+  font-family: 'Consolas', 'Menlo';
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+}
+IDAView > QStatusBar QLabel {
+  padding: 1px 10px 1px 10px;
+  min-width: 50px;
+}
+
+IDAMainWindow > QStatusBar {
+  min-height: 0;
+  height: 22px;
+  background-color: #007acc;
+  border: none;
+  margin: 0;
+  padding 0;
+}
+IDAMainWindow > QStatusBar:item {
+  border: none;
+  border-right: 2px solid qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0.5 #0099FF, stop:0.6 #181818);
+}
+IDAMainWindow > QStatusBar QWidget {
+  font-family: 'Consolas', 'Menlo';
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+}
+IDAMainWindow > QStatusBar QLabel {
+  padding: 1px 10px 1px 10px;
+  min-width: 50px;
+}
+
+IDADockWidget[objectName="Output window"] {
+  /* Output window */
+  qproperty-windowIcon: url(<SKINDIR>/icons/blank.png);
+}
+IDADockWidget[objectName="Output window"] DockWidgetTitle {
+  background-color: #363636;
+  color: #e7e7e7;
+}
+IDADockWidget[objectName="Output window"] QTextEdit:focus {
+  border: 1px solid #215D9C;
+}
+ConsoleWidget CLIWidget,
+ConsoleWidget CLIWidget QGroupBox,
+IDADockWidget[objectName="Output window"] QGroupBox {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+ConsoleWidget CLIWidget QLineEdit,
+IDADockWidget[objectName="Output window"] QLineEdit {
+  padding-bottom: 2px;
+}
+ConsoleWidget CLIWidget QGroupBox QPushButton,
+IDADockWidget[objectName="Output window"] QGroupBox QPushButton {
+  background-color: #0F6EAD;
+  border: 1px solid #0e639c;
+  /*text-transform: uppercase;*/
+  min-width: 70px;
+  min-height: 16px;
+}
+IDADockWidget[objectName="Output window"] QGroupBox QPushButton:focus {
+  border: 1px solid #0094FF;
+}
+IDADockWidget[objectName="Output window"] QGroupBox QPushButton:hover {
+  border: 1px solid #0094FF;
+}
+
+QSizeGrip {
+  image: url(<SKINDIR>/icons/sizegrip.png);
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  margin: 0;
+  padding 0;
+}
+QTableView {
+  border: 1px solid #555555;
+  background-color: #2d2d2d;
 }
 

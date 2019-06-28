@@ -105,7 +105,7 @@ e3e3e3	 //Message text
 404080	 //Patched bytes
 0080ff	 //Unsaved changes
 [OTHER]
-7f5500	 //Highlight color
+a80000	 //Highlight color
 262525	 //Hint color
 [SYNTAX]
 ff0000	0	0	 //Keyword 1
